@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int A,B,C;
-	static boolean[][][] water;
+	static boolean[][] water;
 	static boolean[] ans;
 	static ArrayDeque<int[]> que;
 	static int a,b,c;
@@ -16,9 +16,11 @@ public class Main {
 		A = Integer.parseInt(st.nextToken());
 		B = Integer.parseInt(st.nextToken());
 		C = Integer.parseInt(st.nextToken());
-		water = new boolean[A+1][B+1][C+1];
+		water = new boolean[A+1][B+1];
 		ans = new boolean[C+1];
 		que = new ArrayDeque<>();
+        water[0][0] = true;
+        ans[C] = true; 
 		que.offer(new int[] {0,0,C});
 		while(!que.isEmpty()) {
 			int[] cur = que.poll();
@@ -29,8 +31,8 @@ public class Main {
 				a = cur[0] - move;
 				b = cur[1] + move;
 				c = cur[2];
-				if (!water[a][b][c]) {
-					water[a][b][c] = true;
+				if (!water[a][b]) {
+					water[a][b] = true;
 					if (a == 0) ans[c] = true;
 					que.offer(new int[] {a,b,c});					
 				}
@@ -38,8 +40,8 @@ public class Main {
 				a = cur[0] - move;
 				b = cur[1];
 				c = cur[2] + move;
-				if (!water[a][b][c]) {
-					water[a][b][c] = true;
+				if (!water[a][b]) {
+					water[a][b] = true;
 					if (a == 0) ans[c] = true;
 					que.offer(new int[] {a,b,c});					
 				}
@@ -50,8 +52,8 @@ public class Main {
 				a = cur[0] + move;
 				b = cur[1] - move;
 				c = cur[2];
-				if (!water[a][b][c]) {
-					water[a][b][c] = true;
+				if (!water[a][b]) {
+					water[a][b] = true;
 					if (a == 0) ans[c] = true;
 					que.offer(new int[] {a,b,c});					
 				}
@@ -59,8 +61,8 @@ public class Main {
 				a = cur[0];
 				b = cur[1] - move;
 				c = cur[2] + move;
-				if (!water[a][b][c]) {
-					water[a][b][c] = true;
+				if (!water[a][b]) {
+					water[a][b] = true;
 					if (a == 0) ans[c] = true;
 					que.offer(new int[] {a,b,c});					
 				}
@@ -71,8 +73,8 @@ public class Main {
 				a = cur[0] + move;
 				b = cur[1];
 				c = cur[2] - move;
-				if (!water[a][b][c]) {
-					water[a][b][c] = true;
+				if (!water[a][b]) {
+					water[a][b] = true;
 					if (a == 0) ans[c] = true;
 					que.offer(new int[] {a,b,c});					
 				}
@@ -80,8 +82,8 @@ public class Main {
 				a = cur[0];
 				b = cur[1] + move;
 				c = cur[2] - move;
-				if (!water[a][b][c]) {
-					water[a][b][c] = true;
+				if (!water[a][b]) {
+					water[a][b] = true;
 					if (a == 0) ans[c] = true;
 					que.offer(new int[] {a,b,c});					
 				}
