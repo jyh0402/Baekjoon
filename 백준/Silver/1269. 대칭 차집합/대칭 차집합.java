@@ -26,42 +26,22 @@ public class Main {
 		}
 		Alst.sort(null);
 		Blst.sort(null);
-		Acnt = A;
-		Bcnt = B;
-		int pos = 0;
-		for (int i = 0; i < A; i++) {
-			int a = Alst.get(i);
-			while (pos < B) {
-				int b = Blst.get(pos);
-				if (a == b) {
-					Acnt--;
-					pos++;
-					break;
-				} else if (a > b) {
-					pos++;
-				} else {
-					break;
-				}
-			}
-		}
-		pos = 0;
-		for (int i = 0; i < B; i++) {
-			int b = Blst.get(i);
-			while (pos < A) {
-				int a = Alst.get(pos);
-				if (a == b) {
-					Bcnt--;
-					pos++;
-					break;
-				} else if (b > a) {
-					pos++;
-				} else {
-					break;
-				}
-			}
-		}
-		int sum = Acnt+Bcnt;
-		System.out.println(sum);
+        int i = 0, j = 0, cnt = 0;
+        while (i < A && j < B) {
+            int a = Alst.get(i), b = Blst.get(j);
+            if (a < b) {
+                cnt++;
+                i++;
+            } else if (a > b) {
+                cnt++;
+                j++;
+            } else {
+                i++;
+                j++;
+            }
+        }
+        cnt += (A - i) + (B - j);
+		System.out.println(cnt);
 	}
 
 }
